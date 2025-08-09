@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function(){try{
+        var storageKey='theme';
+        var root=document.documentElement;
+        var saved=localStorage.getItem(storageKey);
+        var mql=window.matchMedia('(prefers-color-scheme: dark)');
+        var preferDark=mql.matches;
+        var theme=(saved==='dark'||saved==='light')?saved:(preferDark?'dark':'light');
+        if(theme==='dark'){ root.classList.add('dark'); root.style.colorScheme='dark'; }
+        else { root.classList.remove('dark'); root.style.colorScheme='light'; }
+        if(!saved){
+          mql.addEventListener('change', function(e){
+            var savedNow=localStorage.getItem(storageKey);
+            if(savedNow==='light'||savedNow==='dark'){ return; }
+            var t=e.matches?'dark':'light';
+            if(t==='dark'){ root.classList.add('dark'); root.style.colorScheme='dark'; }
+            else { root.classList.remove('dark'); root.style.colorScheme='light'; }
+          });
+        }
+      }catch(e){/* noop */}})();
+    </script>
+    <meta name="description" content="Naithcape - Personal Website of Naithan" />
+    <meta name="keywords" content="Naithcape, personal website, portfolio, events, music, racing, development" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&family=Merriweather:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>Naithcape</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
